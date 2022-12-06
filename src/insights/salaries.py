@@ -1,25 +1,25 @@
 from typing import Union, List, Dict
-from src.insights.jobs import read
-
-print(read)
+from jobs import read
 
 
 def get_max_salary(path: str) -> int:
-    """Get the maximum salary of all jobs
 
-    Must call `read`
+    all_infos = read(path)
+    salaries = set()
+    max_salary = 1
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for salrs in all_infos:
+        if salrs["max_salary"].isdigit():
+            integers_salaries = int((salrs["max_salary"]))
+            salaries.add(integers_salaries)
+            # print(salaries)
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    raise NotImplementedError
+    max_salary = max(salaries)
+    # print(max_salary)
+    return max_salary
+
+
+# print(get_max_salary("data/jobs.csv"))
 
 
 def get_min_salary(path: str) -> int:
@@ -85,3 +85,10 @@ def filter_by_salary_range(
         Jobs whose salary range contains `salary`
     """
     raise NotImplementedError
+
+# SOURCE 4
+# Checar se um número é inteiro:
+# https://stackoverflow.com/questions/1265665/how-can-i-check-if-a-string-represents-an-int-without-using-try-except
+# Como é o && no python
+# https://stackoverflow.com/questions/2485466/pythons-equivalent-of-logical-and-in-an-if-statement
+# https://www.w3schools.com/python/ref_func_max.asp#:~:text=The%20max()%20function%20returns,an%20alphabetically%20comparison%20is%20done.

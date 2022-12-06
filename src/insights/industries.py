@@ -10,6 +10,7 @@ def get_unique_industries(path: str) -> List[str]:
     for inds in all_industries:
 
         # A função desconsidera valores vazios
+        # print(inds["industry"])
         if inds["industry"] != '':
             industries.add(inds["industry"])
 
