@@ -5,39 +5,20 @@ import csv
 
 @lru_cache
 def read(path: str) -> List[Dict]:
-    # """Reads a file from a given path and returns its contents
 
-    # Parameters
-    # ----------
-    # path : str
-    #     Full path to file
-
-    # Returns
-    # -------
-    # list
-    #     List of rows as dicts
-    # """
     with open(path, encoding="utf-8") as file:
         dic_reader = csv.DictReader(file, delimiter=",", quotechar='"')
         return list(dic_reader)
 
 
 def get_unique_job_types(path: str) -> List[str]:
-    """Checks all different job types and returns a list of them
 
-    Must call `read`
+    all_jobs = read(path)
+    types_of_jobs = set()
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    raise NotImplementedError
+    for job in all_jobs:
+        types_of_jobs.add(job["job_type"])
+    return list(types_of_jobs)
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
@@ -69,3 +50,12 @@ def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
 # print(data)
 # https://linuxhint.com/use-python-csv-dictreader/
 # https://docs.python.org/3/library/csv.html
+
+# SOURCE 2
+# Duas opções pra adicionar a iteração: usando um [] -> append, igual JS
+# usando set() -> add, porque o set é UM CONJUNTO, igual na matemática {}
+# Santa mentoria
+# https://www.geeksforgeeks.org/set-add-python/
+# https://www.programiz.com/python-programming/methods/set/add
+# https://www.w3schools.com/python/ref_func_set.asp#:~:text=The%20set()%20function%20creates,in%20the%20chapter%20Python%20Sets.
+# https://www.programiz.com/python-programming/methods/list/append
