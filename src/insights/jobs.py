@@ -11,6 +11,9 @@ def read(path: str) -> List[Dict]:
         return list(dic_reader)
 
 
+# print(read("data/jobs.csv"))
+
+
 def get_unique_job_types(path: str) -> List[str]:
 
     all_jobs = read(path)
@@ -19,6 +22,9 @@ def get_unique_job_types(path: str) -> List[str]:
     for job in all_jobs:
         types_of_jobs.add(job["job_type"])
     return list(types_of_jobs)
+
+
+# print(get_unique_job_types("data/jobs.csv"))
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:

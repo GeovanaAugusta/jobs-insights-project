@@ -1,4 +1,7 @@
 from typing import Union, List, Dict
+from src.insights.jobs import read
+
+print(read)
 
 
 def get_max_salary(path: str) -> int:
