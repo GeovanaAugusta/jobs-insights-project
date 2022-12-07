@@ -1,5 +1,5 @@
 from typing import Union, List, Dict
-from jobs import read
+from src.insights.jobs import read
 
 
 def get_max_salary(path: str) -> int:
@@ -23,21 +23,23 @@ def get_max_salary(path: str) -> int:
 
 
 def get_min_salary(path: str) -> int:
-    """Get the minimum salary of all jobs
 
-    Must call `read`
+    all_infos = read(path)
+    salaries = set()
+    min_salary = 1
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for salrs in all_infos:
+        if salrs["min_salary"].isdigit():
+            integers_salaries = int((salrs["min_salary"]))
+            salaries.add(integers_salaries)
+            # print(salaries)
 
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    raise NotImplementedError
+    min_salary = min(salaries)
+    # print(min_salary)
+    return min_salary
+
+
+# print(get_min_salary("data/jobs.csv"))
 
 
 def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
@@ -92,3 +94,6 @@ def filter_by_salary_range(
 # Como é o && no python
 # https://stackoverflow.com/questions/2485466/pythons-equivalent-of-logical-and-in-an-if-statement
 # https://www.w3schools.com/python/ref_func_max.asp#:~:text=The%20max()%20function%20returns,an%20alphabetically%20comparison%20is%20done.
+
+# SOURCE 5
+# https://realpython.com/python-min-and-max/
