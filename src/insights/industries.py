@@ -21,21 +21,15 @@ def get_unique_industries(path: str) -> List[str]:
 
 
 def filter_by_industry(jobs: List[Dict], industry: str) -> List[Dict]:
-    """Filters a list of jobs by industry
+    filtered = []
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
+    for job in jobs:
+        # Coluna industry corresponde ao param industry
+        if job["industry"] == industry:
+            filtered.append(job)
 
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    raise NotImplementedError
+    return filtered
+
 
 # SOURCE 3
 # [{"Operator \"<>\" is not supported in Python 3; use \"!=\" instead"

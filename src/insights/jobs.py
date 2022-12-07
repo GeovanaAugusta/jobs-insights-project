@@ -34,7 +34,8 @@ def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
         # Coluna job_type corresponde ao param job_type
         if job["job_type"] == job_type:
             filtered_jobs.append(job)
-            return filtered_jobs
+
+    return filtered_jobs
 
 
 # SOURCE 1
