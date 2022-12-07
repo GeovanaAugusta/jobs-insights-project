@@ -43,29 +43,12 @@ def get_min_salary(path: str) -> int:
 
 
 def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
-    """Checks if a given salary is in the salary range of a given job
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError("Alguma chave está ausente, min_salary ou max_salary")
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    raise NotImplementedError
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError("Min_salary é maior que o valor de max_salary")
 
 
 def filter_by_salary_range(
@@ -97,3 +80,15 @@ def filter_by_salary_range(
 
 # SOURCE 5
 # https://realpython.com/python-min-and-max/
+
+# SOURCE 8
+# Como lançar erro
+# https://dcc.ufrj.br/~jonathan/python/docs/Excecoes%20em%20Python.pdf
+# Como checar se uma coluna existe numa lista
+# https://www.tutorialspoint.com/how-to-check-if-a-column-exists-in-pandas
+# https://statisticsglobe.com/check-if-column-exists-in-pandas-dataframe-python
+# 'x1' in data.columns
+# Como negar em python
+# https://stackoverflow.com/questions/6117733/negation-in-python#:~:text=The%20negation%20operator%20in%20Python,just%20replace%20your%20!%20with%20not%20.&text=For%20your%20specific%20example%20(as,with%20added%20exception%20handling%20goodness.
+# Checar se é string
+# https://www.geeksforgeeks.org/python-check-if-a-variable-is-string/
